@@ -91,6 +91,8 @@ public class PlayerController : MonoBehaviour
         
         if (collision.CompareTag("Enemy"))
         {
+            if (isGiant)
+                Destroy(collision.gameObject);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
