@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Obstacle
   - Item
+  - GameOver
   layers:
   - Default
   - TransparentFX

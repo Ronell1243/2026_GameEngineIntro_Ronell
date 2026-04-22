@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 15f;
     public Transform groundCheck;
     public LayerMask groundLayer;
+    public GameObject GameOverPanel;
 
     private Rigidbody2D rb;
     private Animator pAni;
@@ -16,7 +18,6 @@ public class PlayerController : MonoBehaviour
 
     private bool isGiant = false;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -24,7 +25,6 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    // Update is called once per frame
     private void Update()
     {
         rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
@@ -77,11 +77,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Respawn"))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            ShowGameOverPanel();
         }
 
         if (collision.CompareTag("Finish"))
@@ -93,7 +94,8 @@ public class PlayerController : MonoBehaviour
         {
             if (isGiant)
                 Destroy(collision.gameObject);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            ShowGameOverPanel();
+
         }
 
         if (collision.CompareTag("Item"))
@@ -103,9 +105,37 @@ public class PlayerController : MonoBehaviour
             Destroy(collision.gameObject);
         }
     }
+    void ShowGameOverPanel()
+    {
+        if (GameOverPanel != null)
+        {
+            GameOverPanel.SetActive(true);
+        }
+
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector2.zero;
+            rb.gravityScale = 0;
+        }
+    }
+
+    void Start()
+    {
+        Time.timeScale = 1f;
+    }
+
+    public void OnClickRespawnButton()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
     void ResetGiant ()
     {
         isGiant = false;
     }
+
+  
 }
    

@@ -8,6 +8,8 @@ public class UIManager : MonoBehaviour
 {
     public GameObject HelpPanel;
     public GameObject NextPanel;
+    public GameObject GameOverPanel;
+
 
     public void OpenHelpPanel()
     {
@@ -43,4 +45,6 @@ public class UIManager : MonoBehaviour
     {
         SceneManager.LoadScene("Story_4");
     }
+
+    
 }
