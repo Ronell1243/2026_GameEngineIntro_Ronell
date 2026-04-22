@@ -98,7 +98,7 @@ public class PlayerController : MonoBehaviour
         if (collision.CompareTag("Item"))
         {
             isInvincible = true;
-            Invoke(nameof(ResetInvincible), 3f);
+            Invoke(nameof(ResetInvincible), 5f);
             Destroy(collision.gameObject);
             GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.5f);
         }
