@@ -46,5 +46,8 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene("Story_4");
     }
 
-    
+    public void ExitButtonAction()
+    {
+        Application.Quit();
+    }
 }

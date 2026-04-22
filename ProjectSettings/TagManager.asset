@@ -9,6 +9,8 @@ TagManager:
   - Obstacle
   - Item
   - GameOver
+  - Item_Speed
+  - Item_Jump
   layers:
   - Default
   - TransparentFX

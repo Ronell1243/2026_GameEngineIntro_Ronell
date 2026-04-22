@@ -16,34 +16,24 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
     private float moveInput;
 
-    private bool isGiant = false;
+    private bool isInvincible = false;
+    private float originalSpeed;
+    private float originalJump;
+
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         pAni = GetComponent<Animator>();
+
+        originalSpeed = moveSpeed;
+        originalJump = jumpForce;
     }
 
 
     private void Update()
     {
         rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
-
-        if (isGiant)
-        {
-            if (moveInput < 0)
-                transform.localScale = new Vector3(2, 2, 2);
-
-            else if (moveInput > 0)
-                transform.localScale = new Vector3(-2, 2, 2);
-        }
-        else
-        {
-            if (moveInput < 0)
-                transform.localScale = new Vector3(1, 1, 1);
-            else if (moveInput > 0)
-                transform.localScale = new Vector3(-1, 1, 1);
-        }
 
         if (moveInput < 0)
         {
@@ -56,7 +46,10 @@ public class PlayerController : MonoBehaviour
             pAni.SetBool("Walk", true);
         }
         else
+        {
             pAni.SetBool("Walk", false);
+        }
+
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
     }
 
@@ -92,19 +85,59 @@ public class PlayerController : MonoBehaviour
         
         if (collision.CompareTag("Enemy"))
         {
-            if (isGiant)
-                Destroy(collision.gameObject);
-            ShowGameOverPanel();
-
+            if (isInvincible)
+            {
+                Debug.Log("무적 상태입니다.");
+            }
+            else
+            {
+                ShowGameOverPanel();
+            }
         }
 
         if (collision.CompareTag("Item"))
         {
-            isGiant = true;
-            Invoke(nameof(ResetGiant), 3f);
+            isInvincible = true;
+            Invoke(nameof(ResetInvincible), 3f);
             Destroy(collision.gameObject);
+            GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.5f);
+        }
+
+        if (collision.CompareTag("Item_Speed"))
+        {
+            moveSpeed = originalSpeed * 2f;
+            Invoke(nameof(ResetSpeed), 3f);
+            Destroy(collision.gameObject);
+            GetComponent<SpriteRenderer>().color = Color.cyan;
+        }
+
+        if (collision.CompareTag("Item_Jump"))
+        {
+            jumpForce = originalJump * 1.5f;
+            Invoke(nameof(ResetJump), 5f);
+            Destroy(collision.gameObject);
+            GetComponent<SpriteRenderer>().color = Color.green;
         }
     }
+
+    void ResetInvincible()
+    {
+        isInvincible = false;
+        GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1f);
+    }
+
+    void ResetSpeed()
+    {
+        moveSpeed = originalSpeed;
+        GetComponent<SpriteRenderer>().color = Color.white;
+    }
+
+    void ResetJump()
+    {
+        jumpForce = originalJump;
+        GetComponent<SpriteRenderer>().color = Color.white;
+    }
+
     void ShowGameOverPanel()
     {
         if (GameOverPanel != null)
@@ -131,11 +164,5 @@ public class PlayerController : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    void ResetGiant ()
-    {
-        isGiant = false;
-    }
-
-  
 }
    
