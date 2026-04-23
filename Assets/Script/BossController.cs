@@ -4,7 +4,7 @@ using System.Collections;
 
 public class BossController : MonoBehaviour
 {
-    public float survivalTime = 20f; 
+    public float survivalTime = 10f; 
     public float moveSpeed = 3f;     
     public Transform player;         
     public GameObject goalObject;    
@@ -33,16 +33,17 @@ public class BossController : MonoBehaviour
     IEnumerator BossSequence()
     {
         bossAni.SetTrigger("Transform");
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
 
         isChasing = true;
 
         yield return new WaitForSeconds(survivalTime);
 
         isChasing = false;
-        bossAni.SetTrigger("Die");
 
+        bossAni.SetTrigger("Die");
         yield return new WaitForSeconds(2f);
+        Debug.Log("토끼가 지쳐 쓰러졌다!"); 
 
         
         if (goalObject != null)
