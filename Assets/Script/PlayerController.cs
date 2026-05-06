@@ -20,11 +20,14 @@ public class PlayerController : MonoBehaviour
     private float originalSpeed;
     private float originalJump;
 
+    float score;
+
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         pAni = GetComponent<Animator>();
+        score = 0f;
 
         originalSpeed = moveSpeed;
         originalJump = jumpForce;
@@ -80,6 +83,7 @@ public class PlayerController : MonoBehaviour
 
         if (collision.CompareTag("Finish"))
         {
+            HighScore.TrySet(SceneManager.GetActiveScene().buildIndex, (int)score);
             collision.GetComponent<LevelObject>().MoveToNextLevel();
         }
         
@@ -101,6 +105,7 @@ public class PlayerController : MonoBehaviour
             Invoke(nameof(ResetInvincible), 5f);
             Destroy(collision.gameObject);
             GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.5f);
+            score += 10f;
         }
 
         if (collision.CompareTag("Item_Speed"))

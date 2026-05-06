@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     public GameObject HelpPanel;
     public GameObject NextPanel;
     public GameObject GameOverPanel;
+    public GameObject LeaderboardPanel;
 
 
     public void OpenHelpPanel()
@@ -19,6 +20,16 @@ public class UIManager : MonoBehaviour
     public void CloseHelpPanel()
     {
         HelpPanel.SetActive(false);
+    }
+
+    public void OpenLeaderboardPanel()
+    {
+        LeaderboardPanel.SetActive(true);
+    }
+
+    public void CloseLeaderboardPanell()
+    {
+        LeaderboardPanel.SetActive(false);
     }
 
     public void GameStartButtonAction()
