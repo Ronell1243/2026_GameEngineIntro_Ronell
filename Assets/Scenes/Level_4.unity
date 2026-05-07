@@ -95964,6 +95964,7 @@ MonoBehaviour:
   HelpPanel: {fileID: 0}
   NextPanel: {fileID: 0}
   GameOverPanel: {fileID: 172118126}
+  LeaderboardPanel: {fileID: 0}
 --- !u!4 &888824142
 Transform:
   m_ObjectHideFlags: 0
@@ -96166,6 +96167,7 @@ GameObject:
   - component: {fileID: 913858576}
   - component: {fileID: 913858575}
   - component: {fileID: 913858574}
+  - component: {fileID: 913858577}
   m_Layer: 0
   m_Name: Item (1)
   m_TagString: Item_Speed
@@ -96289,6 +96291,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &913858577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 913858573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0556f3b0bfa0ad84d81912bbbab36cdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: f620f7a7885ce0e4798846749ec733c1, type: 2}
 --- !u!1 &958061191
 GameObject:
   m_ObjectHideFlags: 0
@@ -96300,6 +96315,7 @@ GameObject:
   - component: {fileID: 958061194}
   - component: {fileID: 958061193}
   - component: {fileID: 958061192}
+  - component: {fileID: 958061195}
   m_Layer: 0
   m_Name: Item
   m_TagString: Item
@@ -96423,6 +96439,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &958061195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 958061191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0556f3b0bfa0ad84d81912bbbab36cdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: f620f7a7885ce0e4798846749ec733c1, type: 2}
 --- !u!1 &1043506546
 GameObject:
   m_ObjectHideFlags: 0
@@ -99588,6 +99617,7 @@ GameObject:
   - component: {fileID: 2145301740}
   - component: {fileID: 2145301739}
   - component: {fileID: 2145301738}
+  - component: {fileID: 2145301741}
   m_Layer: 0
   m_Name: Item (2)
   m_TagString: Item_Jump
@@ -99711,6 +99741,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2145301741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2145301737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0556f3b0bfa0ad84d81912bbbab36cdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: f620f7a7885ce0e4798846749ec733c1, type: 2}
 --- !u!1001 &3354053528286625914
 PrefabInstance:
   m_ObjectHideFlags: 0

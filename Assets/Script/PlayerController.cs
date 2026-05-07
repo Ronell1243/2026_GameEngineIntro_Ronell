@@ -83,7 +83,8 @@ public class PlayerController : MonoBehaviour
 
         if (collision.CompareTag("Finish"))
         {
-            HighScore.TrySet(SceneManager.GetActiveScene().buildIndex, (int)score);
+            //HighScore.TrySet(SceneManager.GetActiveScene().buildIndex, (int)score);
+            StageResultSaver.SaveStage(SceneManager.GetActiveScene().buildIndex, (int)score);
             collision.GetComponent<LevelObject>().MoveToNextLevel();
         }
         
@@ -105,7 +106,7 @@ public class PlayerController : MonoBehaviour
             Invoke(nameof(ResetInvincible), 5f);
             Destroy(collision.gameObject);
             GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.5f);
-            score += 10f;
+            score += collision.GetComponent<ItemObject>().GetPoint();
         }
 
         if (collision.CompareTag("Item_Speed"))
@@ -114,6 +115,7 @@ public class PlayerController : MonoBehaviour
             Invoke(nameof(ResetSpeed), 3f);
             Destroy(collision.gameObject);
             GetComponent<SpriteRenderer>().color = Color.cyan;
+            score += collision.GetComponent<ItemObject>().GetPoint();
         }
 
         if (collision.CompareTag("Item_Jump"))
@@ -122,6 +124,7 @@ public class PlayerController : MonoBehaviour
             Invoke(nameof(ResetJump), 5f);
             Destroy(collision.gameObject);
             GetComponent<SpriteRenderer>().color = Color.green;
+            score += collision.GetComponent<ItemObject>().GetPoint();
         }
     }
 

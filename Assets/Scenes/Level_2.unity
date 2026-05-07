@@ -24626,6 +24626,7 @@ GameObject:
   - component: {fileID: 1167825603}
   - component: {fileID: 1167825602}
   - component: {fileID: 1167825601}
+  - component: {fileID: 1167825604}
   m_Layer: 0
   m_Name: Item
   m_TagString: Item
@@ -24749,6 +24750,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1167825604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167825600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0556f3b0bfa0ad84d81912bbbab36cdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: f620f7a7885ce0e4798846749ec733c1, type: 2}
 --- !u!1 &1446158468
 GameObject:
   m_ObjectHideFlags: 0
@@ -26473,6 +26487,7 @@ MonoBehaviour:
   HelpPanel: {fileID: 0}
   NextPanel: {fileID: 0}
   GameOverPanel: {fileID: 310583904}
+  LeaderboardPanel: {fileID: 0}
 --- !u!4 &2081630321
 Transform:
   m_ObjectHideFlags: 0
